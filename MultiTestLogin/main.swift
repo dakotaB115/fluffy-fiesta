@@ -8,45 +8,33 @@
 
 import Foundation
 
-class user {
-    var username: String
-    var password: String
-    
-    init(username: String, password: String) {
-        self.username = username
-        self.password = password
-    }
-}
-
-var users: [user] = []
+var users = [String]()
 
 func login() {
-    var currentUser = [String]()
     print("Username")
     let username = String(readLine()!)
     print("Password")
     let password = String(readLine()!)
     
-    currentUser.append(username)
-    currentUser.append(password)
-    print(currentUser)
-    
-    //need it to do something like this
-    if users.contains(currentUser) {
-        print("login successful")
+    if users.contains(password) && users.contains(username){
+        print("login succsessful")
+        start()
+    } else {
+        print("Username or password invalid")
     }
 }
-
 func newUser() {
+    var newUser = [String]()
     print("Username")
     let username = String(readLine()!)
     print("Password")
     let password = String(readLine()!)
     
-    users.append(user(username: username, password: password))
+    newUser.append(username)
+    newUser.append(password)
     
-    dump(users)
-    
+    users.append(contentsOf: newUser)
+    print(users)
     start()
 }
 
